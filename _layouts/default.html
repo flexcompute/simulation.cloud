@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="{{relative_url}}/assets/images/favicon.ico"/>
+  <title>{% if page.title %} {{ page.title }} {% else %} {{ site.data.general_settings.title }}{% endif %}</title>
+  <link rel="stylesheet" media="screen" type="text/css" href="{{relative_url}}/assets/css/bootstrap.min.css"/>
+  <link rel="stylesheet" media="screen" type="text/css" href="{{relative_url}}/assets/css/plugins.min.css"/>
+  <link rel="stylesheet" media="screen" type="text/css" href="{{relative_url}}/assets/css/style.min.css"/>
+  <!--page wise css-->
+  {% if page.custom_css -%}
+    {%- for stylesheet in page.custom_css -%}
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/color/{{ stylesheet }}.css">
+    {% endfor %}
+  {%- endif -%}
+  {%- if page.custom_font -%}
+    {% for stylesheet in page.custom_font %}
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/font/{{ stylesheet }}.css">
+    {% endfor %}
+  {% endif %}
+  <!--/.page wise css-->
+  {% if site.google_tag_manager.enable and jekyll.environment == 'production' %}
+    {% include gtm.html %}
+  {% endif %}
+  {% if site.google_analytics.enable and jekyll.environment == 'production' %}
+    {% include analytics.html %}
+  {% endif %}
+  <link rel="stylesheet" type="text/css" href="{{relative_url}}/assets/css/override.css"/>
+  {% seo %}
+  {% if page.tags %}
+    <meta itemprop="keywords" content="{{ page.tags | join: ',' }}" />
+    {% for tag in page.tags %}
+    <meta property="article:tag" content="{{ tag }}">
+    {% endfor %}
+  {% endif %}
+</head>
+<body class="body-bg {% if page.overflow %}overflow-hidden {% endif %}">
+  {% if site.google_tag_manager.enable and jekyll.environment == 'production' %}
+    {% include gtm_noscript.html %}
+  {% endif %}
+  <div class="content-wrapper" style="height: 100%">
+    {{ content }}
+  </div>
+  {% if site.enable_hubspot %}
+  <!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/43542601.js"></script>
+  <!-- End of HubSpot Embed Code -->
+  {% endif %}
+</body>
+</html>

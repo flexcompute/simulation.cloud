@@ -1,0 +1,131 @@
+---
+layout: default
+title: Engineering Simulation Softwares & Innovated Simulation Solution | Flexcompute
+custom_font: font2
+image:
+  path: "assets/images/home/SimulationCloud_Thumbnail.png"
+  alt: Engineering Simulation Softwares & Innovated Simulation Solution | Flexcompute
+hero_section:
+    enable: true
+    list:
+    - name: 'Tidy3D'
+      home_page_link: 'https://www.flexcompute.com/tidy3d/solver/'
+      logo: '/assets/images/home/tidy3d-logo.svg'
+      logo_alt: 'EM simulation solution software Tidy3D product logo'
+      bg_image: '/assets/images/home/tidy3d-bg.png'
+      bg_image_alt: 'Tidy3D EM Solver by FDTD method on Simulation Cloud'
+      enable: true
+      document: "EM Documentation"
+      document_link: 'https://docs.flexcompute.com/projects/tidy3d/en/latest/'
+      title: "Faster, Larger <a target='_blank' class='text-decoration-none text-reset color-dark-4 a-unset' href='https://www.flexcompute.com/fdtd101/'>FDTD</a>"
+      description: 'New Chips, New Solvers<br>For a breakthrough in simulation experiences'
+      type: 'tidy3d'
+      target: _blank
+      sign_in_link_text: 'Sign in'
+      sign_up_link_text: 'Sign up for Free'
+    - name: 'Flow 360'
+      home_page_link: 'https://www.flexcompute.com/flow360/solver/'
+      enable: true
+      logo: '/assets/images/home/Flow360-logo.svg'
+      logo_alt: 'CFD simulation solution software Flow360 product logo'
+      bg_image: '/assets/images/home/flow360-bg.png'
+      bg_image_alt: 'Flow360 CFD simulation as Computational fluid dynamics on Simulation Cloud'
+      document: "CFD Documentation"
+      document_link: 'https://docs.flexcompute.com/projects/flow360/en/latest/'
+      title: "A new era of CFD"
+      description: 'Created for the most sophisticated engineers to gain unrivaled performance'
+      type: 'flow360'
+      target: _blank
+      sign_in_link_text: 'Sign in'
+      extras_links:
+        - link_text: 'Request an account'
+          link: "https://www.flexcompute.com/flow360/contact/?source=//www.simulation.cloud"
+          target: _blank
+          enable: true
+      image_class: 'scale-8'
+---
+{% if page.hero_section.enable %}
+<!--sign_up_dev_link: 'https://flow360.dev-simulation.cloud/sigup'-->
+<!--sign_up_link: 'https://flow360.simulation.cloud/sigup'-->
+<div class="wrapper">
+    <div class="container">
+        <div class="logo d-flex justify-content-between align-items-center">
+            <a href="{{site.data.general_settings.flexcompute_url}}" class="d-block pl-0 pt-20 pl-md-20 pb-20">
+                <img width="180" height="23" src="{{site.data.general_settings.black_logo_1x}}"
+                     class="{% if include.logo_class %} {{include.logo_class}} logo-dark {% else %} logo-dark {% endif %} {% if include.black_logo_disable %} d-none {% endif %}"
+                     alt="{{site.data.general_settings.title}}"/>
+            </a>
+            <a
+                    href="{{site.data.general_settings.contact_us_url}}"
+                    target="_blank"
+                    class="btn btn-s btn-sm btn-fc-primary mb-0 mr-0" style="min-width: 136px;padding: 8px 12px">
+                Talk to an Expert
+            </a>
+        </div>
+        <div class="space40"></div>
+        <div class="product-card row align-items-center justify-content-center">
+            {% for item in page.hero_section.list %}
+            <div class="col-lg-5 mb-50" style="height: 100%">
+                <div class="box bg-white shadow d-flex flex-column justify-content-between box-max-height" style="padding: 0;height: 100%">
+                    <div class="header d-flex justify-content-between align-items-end pt-20 pl-20 pr-20 pb-20 border-bottom" style="height: 90px">
+                        {% if item.logo %}
+                        <a href="{{item.home_page_link}}" class=" {% if item.image_class %} {{item.image_class}} {% endif %}" style="max-width: 180px" target="_blank">
+                            <picture>
+                                <source srcset="{{item.logo}}" type="image/svg+xml">
+                                <img class="tp-caption-img aspect-ratio" src="{{item.logo}}" alt="{{item.logo_alt}}" width="204" height="70">
+                            </picture>
+                        </a>
+                        {%endif%}
+                        {% if item.document %}
+                        <a href="{{item.document_link}}" target="_blank" class="documentation-link">
+                            <span class="font-size-18 color-dark-gray">
+                            {{ item.document }}
+                        </span>
+                        </a>
+                        {%endif%}
+                    </div>
+                    <div class="document-content position-relative">
+                        {% if item.bg_image %}
+                        <div class="img-content">
+                            <img
+                                    style="border-radius: 15px"
+                                    width="1024"
+                                    height="576"
+                                    class="aspect-ratio document-image"
+                                    src="{{item.bg_image}}"
+                                    alt="{{ item.bg_image_alt }}">
+                        </div>
+
+                        {% endif %}
+                        <div class="description pt-20 pl-20 pr-20 pb-30">
+                            {% if item.title %}
+                            <h4 class="mb-0 color-dark-4">{{item.title}}</h4>
+                            {% endif %}
+                            {% if item.description %}
+                            <p class="font-size-18 color-dark-gray mb-0">{{item.description}}</p>
+                            {% endif %}
+                            <p class="mb-0">
+                              {% if item.extras_links %}
+                              {% for extra in item.extras_links %}
+                              {% if extra.enable %}
+                              <a href="{{ extra.link }}" {%if extra.target%} target="{{extra.target}}" {%endif%}  class="btn btn-s btn-sm btn-fc-primary mb-0" style="width: max-content; padding: 8px 12px">{{ extra.link_text }}</a>
+                              {% endif %}
+                              {% endfor %}
+                              {% endif %}
+                              {% if item.sign_up_link_text %}
+                              <a href="{{ site[item.type].sign_up }}" class="btn btn-s btn-sm btn-fc-primary mb-0" style="width: max-content; padding: 8px 12px">{{ item.sign_up_link_text }}</a>
+                              {% endif %}
+                              {% if item.sign_in_link_text %}
+                              <a href="{{ site[item.type].sign_in }}" class="btn btn-s btn-sm btn-dashed-primary mb-0" style="width: max-content;">{{ item.sign_in_link_text }}</a>
+                              {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% include footer.html %}
+    </div>
+</div>
+{% endif %}
