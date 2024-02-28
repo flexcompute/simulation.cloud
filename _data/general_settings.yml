@@ -76,9 +76,9 @@ contact_us:
 # Copyright settings
 copyright_infos:
   - text: Terms & Conditions
-    url: "/term-of-use"
+    url: "/terms-of-use/"
   - text: Privacy Policy
-    url: '/privacy'
+    url: '/privacy/'
   - text: Copyright © 2024 Flexcompute, inc.
     url: 'javascript:void(0)'
 
